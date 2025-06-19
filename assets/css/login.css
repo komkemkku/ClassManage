@@ -1,0 +1,52 @@
+/* assets/css/login.css */
+body,
+.bg-main {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 32px 0 rgba(20, 38, 95, 0.08);
+  transition: box-shadow 0.3s;
+}
+
+.brand-text {
+  color: #375a7f;
+  letter-spacing: 0.03em;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #375a7f 0%, #5fa8d3 100%);
+  border: none;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(90deg, #345175 0%, #4e93c2 100%);
+}
+
+input.form-control {
+  border-radius: 0.75rem;
+}
+
+input.form-control:focus {
+  box-shadow: 0 0 0 2px #5fa8d399;
+  border-color: #5fa8d3;
+}
+
+.card-footer {
+  background: transparent;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+}

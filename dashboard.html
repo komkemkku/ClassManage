@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassManage - Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="admin-bg min-vh-100 d-flex">
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="sidebar custom-sidebar bg-white shadow d-flex flex-column p-3">
+            <div class="d-flex align-items-center mb-3 pb-2 border-bottom">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="40" class="me-2">
+                <span class="fs-4 fw-bold brand-text">ClassManage</span>
+                <button class="btn d-lg-none ms-auto" id="sidebarClose" aria-label="Close sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <ul class="nav nav-pills flex-column mb-auto gap-1">
+                <li><a href="/dashboard.html" class="nav-link active"><i class="bi bi-house"></i> Dashboard</a></li>
+                <li class="nav-item"><a href="/users.html" class="nav-link"><i class="bi bi-people"></i>
+                        จัดการผู้ใช้</a></li>
+                <li><a href="/teachers.html" class="nav-link"><i class="bi bi-person-badge"></i> จัดการครู</a></li>
+                <li><a href="/students.html" class="nav-link"><i class="bi bi-person"></i> จัดการนักเรียน</a></li>
+                <li><a href="/classes.html" class="nav-link"><i class="bi bi-journal-bookmark"></i> วิชา/ห้องเรียน</a>
+                </li>
+                <li><a href="/attendance.html" class="nav-link"><i class="bi bi-clipboard-check"></i> เช็คชื่อ</a></li>
+                <li><a href="/announcements.html" class="nav-link"><i class="bi bi-megaphone"></i> ประกาศ</a></li>
+                <li><a href="/adminlogs.html" class="nav-link"><i class="bi bi-clock-history"></i> Admin Logs</a></li>
+                <li><a href="/settings.html" class="nav-link"><i class="bi bi-gear"></i> ตั้งค่า</a></li>
+                <li><a href="#" class="nav-link logout-link text-danger"><i class="bi bi-box-arrow-right"></i>
+                        ออกจากระบบ</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hamburger Button for Mobile -->
+        <button class="btn sidebar-toggle d-lg-none position-fixed top-0 start-0 m-3" id="sidebarOpen"
+            aria-label="Open sidebar">
+            <i class="bi bi-list fs-2"></i>
+        </button>
+
+        <!-- Main Content -->
+        <div class="main-content flex-grow-1">
+            <!-- Topbar -->
+            <nav
+                class="navbar navbar-light bg-white shadow-sm px-4 py-2 mb-4 d-flex justify-content-between align-items-center">
+                <span class="fw-semibold fs-5">แดชบอร์ดผู้ดูแลระบบ</span>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="admin" width="36" height="36"
+                            class="rounded-circle me-2">
+                        <span id="adminName">Admin Name</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle me-2"></i>โปรไฟล์</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger logout-link" href="#"><i
+                                    class="bi bi-box-arrow-right me-2"></i>ออกจากระบบ</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Dashboard Overview Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3 col-6">
+                    <div class="dashboard-card card shadow-sm border-0">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="icon-wrapper bg-primary bg-gradient me-3">
+                                <i class="bi bi-people fs-2 text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-0 fw-bold" id="totalUsers">0</h4>
+                                <small>ผู้ใช้ทั้งหมด</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="dashboard-card card shadow-sm border-0">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="icon-wrapper bg-success bg-gradient me-3">
+                                <i class="bi bi-person-badge fs-2 text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-0 fw-bold" id="totalTeachers">0</h4>
+                                <small>ครู</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="dashboard-card card shadow-sm border-0">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="icon-wrapper bg-info bg-gradient me-3">
+                                <i class="bi bi-person fs-2 text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-0 fw-bold" id="totalStudents">0</h4>
+                                <small>นักเรียน</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="dashboard-card card shadow-sm border-0">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="icon-wrapper bg-warning bg-gradient me-3">
+                                <i class="bi bi-journal-bookmark fs-2 text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-0 fw-bold" id="totalClasses">0</h4>
+                                <small>วิชา/ห้องเรียน</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Announcements + Logs -->
+            <div class="row g-4">
+                <!-- ประกาศล่าสุด -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-transparent border-0 pb-0">
+                            <h6 class="fw-bold mb-1"><i class="bi bi-megaphone me-2"></i>ประกาศล่าสุด</h6>
+                        </div>
+                        <div class="card-body pt-2" id="announcementList">
+                            <div class="text-muted text-center">ไม่มีประกาศล่าสุด</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- LOG ล่าสุด -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-transparent border-0 pb-0">
+                            <h6 class="fw-bold mb-1"><i class="bi bi-clock-history me-2"></i>Log กิจกรรมผู้ดูแล</h6>
+                        </div>
+                        <div class="card-body pt-2" id="adminLogs">
+                            <div class="text-muted text-center">ไม่มีข้อมูล Log ล่าสุด</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="row mt-4 g-3">
+                <div class="col-12">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body d-flex flex-wrap gap-3 justify-content-center">
+                            <a href="/users.html" class="quick-action btn btn-outline-primary"><i
+                                    class="bi bi-plus-lg me-2"></i>เพิ่มผู้ใช้</a>
+                            <a href="/classes.html" class="quick-action btn btn-outline-success"><i
+                                    class="bi bi-journal-plus me-2"></i>เพิ่มวิชา</a>
+                            <a href="/announcements.html" class="quick-action btn btn-outline-info"><i
+                                    class="bi bi-megaphone me-2"></i>สร้างประกาศ</a>
+                            <a href="/attendance.html" class="quick-action btn btn-outline-warning"><i
+                                    class="bi bi-clipboard-check me-2"></i>ดูรายงานเช็คชื่อ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Statistics & Charts -->
+            <div class="row mt-4 g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-transparent border-0 pb-0">
+                            <h6 class="fw-bold mb-1"><i class="bi bi-bar-chart-line me-2"></i>สถิติขาด-ลา-มาสาย</h6>
+                        </div>
+                        <div class="card-body pt-2">
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    ขาดเรียน
+                                    <span class="badge bg-danger rounded-pill" id="absentCount">0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    ลาเรียน
+                                    <span class="badge bg-warning rounded-pill text-dark" id="leaveCount">0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    มาสาย
+                                    <span class="badge bg-info rounded-pill text-dark" id="lateCount">0</span>
+                                </li>
+                            </ul>
+                            <canvas id="attendancePieChart" width="100" height="100"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-transparent border-0 pb-0">
+                            <h6 class="fw-bold mb-1"><i class="bi bi-graph-up-arrow me-2"></i>กราฟสถิติการขาด-ลา-มาสาย
+                                รายเดือน</h6>
+                        </div>
+                        <div class="card-body pt-2">
+                            <canvas id="attendanceLineChart" height="120"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="pt-5 pb-2 text-center text-muted small">
+                &copy; <span id="footerYear"></span> ClassManage | สำหรับแอดมินเท่านั้น
+            </footer>
+        </div>
+    </div>
+    <!-- Bootstrap 5 + icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

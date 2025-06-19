@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassManage - ตั้งค่า</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .profile-avatar-lg {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e9ecef;
+            margin-bottom: 10px;
+        }
+
+        .setting-form input[readonly] {
+            background: #f8f9fa;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-bg min-vh-100 d-flex">
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="sidebar custom-sidebar bg-white shadow d-flex flex-column p-3">
+            <div class="d-flex align-items-center mb-3 pb-2 border-bottom">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="40" class="me-2">
+                <span class="fs-4 fw-bold brand-text">ClassManage</span>
+                <button class="btn d-lg-none ms-auto" id="sidebarClose"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <ul class="nav nav-pills flex-column mb-auto gap-1">
+                <li><a href="/dashboard.html" class="nav-link"><i class="bi bi-house"></i> Dashboard</a></li>
+                <li><a href="/users.html" class="nav-link"><i class="bi bi-people"></i> จัดการผู้ใช้</a></li>
+                <li><a href="/teachers.html" class="nav-link"><i class="bi bi-person-badge"></i> จัดการครู</a></li>
+                <li><a href="/students.html" class="nav-link"><i class="bi bi-person"></i> จัดการนักเรียน</a></li>
+                <li><a href="/classes.html" class="nav-link"><i class="bi bi-journal-bookmark"></i> วิชา/ห้องเรียน</a>
+                </li>
+                <li><a href="/attendance.html" class="nav-link"><i class="bi bi-clipboard-check"></i> เช็คชื่อ</a></li>
+                <li><a href="/announcements.html" class="nav-link"><i class="bi bi-megaphone"></i> ประกาศ</a></li>
+                <li><a href="/adminlogs.html" class="nav-link"><i class="bi bi-clock-history"></i> Admin Logs</a></li>
+                <li class="nav-item"><a href="/settings.html" class="nav-link active"><i class="bi bi-gear"></i>
+                        ตั้งค่า</a></li>
+                <li><a href="#" class="nav-link logout-link text-danger"><i class="bi bi-box-arrow-right"></i>
+                        ออกจากระบบ</a></li>
+            </ul>
+        </nav>
+        <!-- Hamburger Sidebar Toggle -->
+        <button class="btn sidebar-toggle d-lg-none position-fixed top-0 start-0 m-3" id="sidebarOpen">
+            <i class="bi bi-list fs-2"></i>
+        </button>
+        <!-- Main Content -->
+        <div class="main-content flex-grow-1">
+            <nav class="navbar navbar-light bg-white shadow-sm px-4 py-2 mb-4">
+                <span class="fw-semibold fs-5"><i class="bi bi-gear me-2"></i>ตั้งค่าโปรไฟล์ผู้ดูแลระบบ</span>
+            </nav>
+            <div class="d-flex flex-column align-items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="profile-avatar-lg shadow-sm">
+                <div>
+                    <button class="btn btn-outline-secondary btn-sm mb-3" type="button" disabled>
+                        <i class="bi bi-camera me-1"></i> เปลี่ยนรูป
+                    </button>
+                </div>
+            </div>
+            <div class="card shadow-sm border-0 setting-form mx-auto" style="max-width: 400px;">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">ชื่อ - สกุล</label>
+                            <input type="text" class="form-control" value="นายแอดมิน ระบบ" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" value="admin" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" value="admin@classmanage.com" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">เปลี่ยนรหัสผ่านใหม่</label>
+                            <input type="password" class="form-control" placeholder="*********" disabled>
+                        </div>
+                        <button class="btn btn-primary w-100" type="button" disabled>บันทึก</button>
+                        <div class="text-muted small mt-3">
+                            *หากต้องการเปลี่ยนข้อมูล กรุณาติดต่อผู้พัฒนาระบบ
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <footer class="pt-5 pb-2 text-center text-muted small">
+                &copy; <span id="footerYear"></span> ClassManage
+            </footer>
+        </div>
+    </div>
+    <!-- Bootstrap & JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/settings.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+/* dashboard.css */
+
+body,
+html {
+  background: #f7fafc;
+}
+.admin-bg {
+  background: linear-gradient(135deg, #f0f4ff 0%, #e6f3f7 100%);
+}
+
+.custom-sidebar {
+  width: 260px;
+  min-width: 210px;
+  z-index: 100;
+}
+
+@media (max-width: 991.98px) {
+  .custom-sidebar {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    height: 100vh;
+    transition: left 0.25s;
+  }
+  .custom-sidebar.show {
+    left: 0;
+  }
+  .sidebar-toggle {
+    z-index: 102;
+  }
+}
+
+.brand-text {
+  letter-spacing: 1px;
+  color: #235;
+}
+
+.dashboard-card .icon-wrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(44, 62, 80, 0.06);
+}
+
+.dashboard-card {
+  border-radius: 16px;
+  min-height: 110px;
+}
+
+.quick-action {
+  min-width: 160px;
+}
+
+.card {
+  border-radius: 18px;
+}
+.card-header {
+  background: none;
+  border: none;
+}
+.list-group-item {
+  border: none;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+}
+footer {
+  margin-top: 3rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 991.98px) {
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    margin-left: 260px;
+    padding: 24px 36px 0 36px;
+  }
+}

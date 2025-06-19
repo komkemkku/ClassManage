@@ -1,0 +1,35 @@
+.table th,
+.table td {
+  vertical-align: middle !important;
+}
+.table-hover tbody tr:hover {
+  background: #f2f6fa;
+}
+.badge-status {
+  font-size: 0.93em;
+  border-radius: 0.8em;
+  padding: 0.25em 1em;
+}
+.badge-success {
+  background: #d4f5e9;
+  color: #23b27e;
+}
+.badge-inactive {
+  background: #ffe3e1;
+  color: #e2462c;
+}
+.avatar-sm {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e9ecef;
+}
+.action-btns .btn {
+  border-radius: 1em;
+  font-size: 0.95em;
+  padding: 0.3em 1.1em;
+}
+.modal-content {
+  border-radius: 1.5em;
+}
