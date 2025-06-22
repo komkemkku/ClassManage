@@ -124,7 +124,7 @@ document.querySelectorAll(".logout-link").forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
     if (confirm("คุณต้องการออกจากระบบใช่หรือไม่?")) {
-      window.location.href = "/login.html";
+      window.location.href = "/index.html";
     }
   });
 });
